@@ -9,10 +9,3 @@ spring:
     initialization-mode: always
     initialize: true
     continue-on-error: true
-
-  jpa:
-    hibernate:
-      ddl-auto: <create | create-drop | update | validate | none> # Choose one value
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
