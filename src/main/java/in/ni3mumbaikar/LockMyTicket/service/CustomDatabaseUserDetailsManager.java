@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -100,5 +101,9 @@ public class CustomDatabaseUserDetailsManager implements UserDetailsManager {
             throw new UsernameNotFoundException("User " + username + " is not available");
         }
         return user.get();
+    }
+
+    public ArrayList<CustomUserDetails> getAllUsers() {
+        return (ArrayList<CustomUserDetails>) userRepository.getAllUsers();
     }
 }

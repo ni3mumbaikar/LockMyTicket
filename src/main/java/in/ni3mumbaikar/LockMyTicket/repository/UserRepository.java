@@ -24,7 +24,7 @@ public class UserRepository {
 
     public void createUser(CustomUserDetails user) {
         jdbcTemplate.update(QueryConstant.UserQueries.CREATE_NEW_USER,
-                user.getUsername(), user.getFirstName(), user.getLastName(), passwordEncoder.encode(user.getPassword()), user.isEnabled());
+                user.getUsername(), user.getFirstName(), user.getLastName(), passwordEncoder.encode(user.getPassword()), true);
     }
 
     public Optional<CustomUserDetails> getUserByUserName(String username) {
@@ -34,7 +34,7 @@ public class UserRepository {
                         CustomUserDetails user = new CustomUserDetails();
                         String userName = rs.getString("user_name");
                         String password = rs.getString("password");
-                        boolean isActive = rs.getBoolean("is_active");
+                        boolean isActive = rs.getBoolean("active");
                         user.setEnabled(isActive);
                         user.setUsername(userName);
                         user.setPassword(password);

@@ -18,7 +18,7 @@ public class SecurityConfig {
                         authorizationManagerRequestMatcherRegistry
                                 .requestMatchers("/auth/**").permitAll() // Allow unauthenticated access to /auth/*
                                 .requestMatchers(HttpMethod.POST, "/auth/signup").permitAll() // Allow POST for signup
-                                .anyRequest().permitAll() // Require authentication for all other requests
+                                .anyRequest().authenticated() // Require authentication for all other requests
                 )
                 .httpBasic(Customizer.withDefaults()); // Use HTTP Basic authentication
 
